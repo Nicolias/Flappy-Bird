@@ -9,10 +9,20 @@ public class BulletPool : MonoBehaviour
     [SerializeField] private Bullet _prefab;
 
     private Queue<Bullet> _pool = new Queue<Bullet>();
+    private List<Bullet> _createdBullet = new List<Bullet>();
 
     private void OnDisable()
     {
-        _pool.ToList().ForEach(bullet => bullet.LifeTimeOver -= Put);
+        _createdBullet.ForEach(bullet => bullet.LifeTimeOver -= Put);
+    }
+
+    public void Reset()
+    {
+        _createdBullet.ForEach(bullet =>
+        {
+            if (_pool.Contains(bullet) == false)
+                Put(bullet);
+        });
     }
 
     public Bullet GetBullet()
@@ -21,6 +31,7 @@ public class BulletPool : MonoBehaviour
         {
             Bullet bullet = Instantiate(_prefab, _container);
             bullet.LifeTimeOver += Put;
+            _createdBullet.Add(bullet);
             
             return bullet;
         }

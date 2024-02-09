@@ -48,5 +48,7 @@ public class BirdMover : MonoBehaviour
     public void Reset()
     {
         _selfTransform.position = _startPostition;
+        _rigidbody.velocity = new Vector2(0, 0);
+        _selfTransform.rotation = Quaternion.identity;
     }
 }

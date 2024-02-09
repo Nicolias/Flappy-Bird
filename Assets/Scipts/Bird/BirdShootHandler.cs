@@ -9,4 +9,9 @@ public class CharacterShootHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
             _gun.Shoot();
     }
+
+    public void Reset()
+    {
+        _gun.Reset();
+    }
 }

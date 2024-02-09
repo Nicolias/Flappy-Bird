@@ -9,10 +9,22 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private Enemy _prefab;
 
     private Queue<Enemy> _pool = new Queue<Enemy>();
-
+    private List<Enemy> _createdEnemy = new List<Enemy>();
+    
     private void OnDisable()
     {
-        _pool.ToList().ForEach(enmey => enmey.Die -= Put);
+        _createdEnemy.ForEach(enemy => enemy.Die -= Put);
+    }
+
+    public void Reset()
+    {
+        _createdEnemy.ForEach(enemy => 
+        {
+            enemy.Reset();
+
+            if (_pool.Contains(enemy) == false)
+                Put(enemy);
+        });
     }
 
     public Enemy GetEnemy()
@@ -22,6 +34,8 @@ public class EnemyPool : MonoBehaviour
             Enemy enemy = Instantiate(_prefab, _container);
             enemy.Die += Put;
             enemy.gameObject.SetActive(true);
+            _createdEnemy.Add(enemy);
+
             return enemy;
         }
 

@@ -6,6 +6,11 @@ public class Gun : MonoBehaviour
     [SerializeField] private BulletPool _pool;
     [SerializeField] private Vector3 _direction;
 
+    public void Reset()
+    {
+        _pool.Reset();
+    }
+
     public void Shoot()
     {
         Bullet bullet = _pool.GetBullet();

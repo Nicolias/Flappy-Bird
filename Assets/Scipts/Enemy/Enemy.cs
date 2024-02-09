@@ -27,6 +27,11 @@ public class Enemy : MonoBehaviour, IInteractable
         _collisionHandler.Detected -= OnDetected;
     }
 
+    public void Reset()
+    {
+        _shootHandler.Reset();
+    }
+
     public void Interacte(Bird bird)
     {
         bird.Dead();

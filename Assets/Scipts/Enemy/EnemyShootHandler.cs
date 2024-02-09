@@ -16,6 +16,11 @@ public class EnemyShootHandler : MonoBehaviour
         StopCoroutine(Shoot());
     }
 
+    public void Reset()
+    {
+        _gun.Reset();
+    }
+
     private IEnumerator Shoot()
     {
         WaitForSeconds wait = new WaitForSeconds(_delay);

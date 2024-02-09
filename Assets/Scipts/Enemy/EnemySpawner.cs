@@ -13,6 +13,11 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(GenerateEnemies());
     }
 
+    public void Reset()
+    {
+        _pool.Reset();
+    }
+
     private IEnumerator GenerateEnemies()
     {
         WaitForSeconds wait = new WaitForSeconds(_delay);

@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(BirdMover))]
 public class Bird : MonoBehaviour
 {
+    [SerializeField] private CharacterShootHandler _shootHandler;
+
     private CollisionHandler _collisionHandler;
     private ScoreCounter _scoreCounter;
     private BirdMover _mover;
@@ -33,6 +35,7 @@ public class Bird : MonoBehaviour
     {
         _mover.Reset();
         _scoreCounter.Reset();
+        _shootHandler.Reset();        
     }
 
     public void Dead()
