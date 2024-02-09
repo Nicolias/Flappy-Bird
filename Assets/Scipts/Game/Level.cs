@@ -7,7 +7,7 @@ public class Level : MonoBehaviour
     [SerializeField] private EndScreen _endScreen;
     [SerializeField] private EnemySpawner _enemySpawner;
 
-    private void Start()
+    private void Awake()
     {
         _startScreen.Open();
         Time.timeScale = 0;
